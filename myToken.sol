@@ -43,7 +43,7 @@ contract DegenVending is ERC20, Ownable {
         items.push(Item(items.length, _name));
     }
 
-    // Get the list of item names owned by the caller (No extra inputs required)
+    // Get the list of item names owned by the caller
     function getUserItems() public view returns (string[] memory) {
         uint256[] memory itemIds = userItems[msg.sender];
         string[] memory ownedItemNames = new string[](itemIds.length);
@@ -53,5 +53,11 @@ contract DegenVending is ERC20, Ownable {
         }
 
         return ownedItemNames;
+    }
+
+    // Burn tokens from the caller's balance
+    function burn(uint256 amount) public {
+        require(balanceOf(msg.sender) >= amount, "Not enough tokens to burn.");
+        _burn(msg.sender, amount);
     }
 }
