@@ -3,6 +3,7 @@
 ## Features
 - ERC20 token for in-game rewards and transactions.
 - **Minting**: Only the owner can mint new tokens.
+- **Custom Transfers**: Players can transfer tokens to other players using a custom function.
 - **Item Redemption**: Players can redeem tokens for random items by burning tokens.
 - **Item Management**: Only the owner can add new items to the in-game store.
 - **Token Burning**: Players can burn their own tokens if no longer needed.
@@ -29,6 +30,10 @@
 ### `mint(address to, uint256 amount)`
 - **Description**: Allows the owner to mint new tokens for a specified address.
 - **Access Control**: Only the owner can call this function.
+
+### `transferTokens(address to, uint256 amount)`
+- **Description**: Transfers tokens from the caller's account to another address using a custom transfer function.
+- **Access Control**: Public function accessible to all players.
 
 ### `redeemItem()`
 - **Description**: Allows a player to redeem a random item by burning tokens.
