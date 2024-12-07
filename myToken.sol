@@ -60,4 +60,11 @@ contract DegenVending is ERC20, Ownable {
         require(balanceOf(msg.sender) >= amount, "Not enough tokens to burn.");
         _burn(msg.sender, amount);
     }
+
+    // Custom transfer function
+    function transferTokens(address to, uint256 amount) public returns (bool) {
+        require(balanceOf(msg.sender) >= amount, "Insufficient balance.");
+        _transfer(msg.sender, to, amount);
+        return true;
+    }
 }
